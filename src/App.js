@@ -1,28 +1,25 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import ApolloClient from 'apollo-boost';
+import {ApolloProvider} from 'react-apollo';
+import Courses from './components/Courses';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+const client = new ApolloClient({
+  uri:"https://vm8mjvrnv3.lp.gql.zone/graphql"
+});
+
+const App = () => (
+  <ApolloProvider client= {client}>
+    <div className= "container">
+      <nav className ="navbar navbar-dark bg-primary">
+        <a href="#" className =" navbar-brand "> React and GraphQL </a>
+      </nav>
+      <div className="row">
+        <h1> React GraphQL </h1>
+        <Courses />
       </div>
-    );
-  }
-}
+    </div>
+  </ApolloProvider>
+)
 
 export default App;
